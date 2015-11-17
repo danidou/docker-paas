@@ -1,0 +1,29 @@
+autodock:
+  image: prologic/autodock
+  restart: always
+  ports:
+    - "1338:1338/udp"
+    - "1338:1338/tcp"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+
+autodocklogger:
+  image: prologic/autodock-logger
+  restart: always
+  links:
+    - autodock
+
+autodockhipache:
+  image: prologic/autodock-hipache
+  restart: always
+  links:
+    - autodock
+    - hipache:redis
+
+hipache:
+  image: tutum/hipache
+  restart: always
+  ports:
+    - 80:80
+    - 443:443
+
