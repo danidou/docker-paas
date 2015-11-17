@@ -21,7 +21,7 @@ Then, run:
 
 ```bash
 $ docker-compose up -d 
-``
+```
 
 Woah! That's it! You got a full up and running PaaS server!
 All you need to do is for your other docker containers to "expose" port 80 
